@@ -9,9 +9,12 @@ const sequelize = new Sequelize(
   process.env.POSTGRESQL_PASSWORD,
   {
     // native: true,
-    // ssl: true,
-    host: process.env.POSTGRESQL_HOST,
     dialect: "postgres",
+    host: process.env.POSTGRESQL_HOST,
+    dialectOptions: {
+      ssl: true,
+      sslmode: 'require'
+    }
   }
 );
 
